@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mit Prajapati | Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        dark: '#0f172a', // slate-900
+                        primary: '#3b82f6', // blue-500
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-200 font-sans antialiased selection:bg-blue-500 selection:text-white transition-colors duration-300 relative">
+
+    <!-- Navbar -->
+    <header class="fixed top-0 left-0 right-0 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md z-40 border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold tracking-wider text-blue-600 dark:text-blue-400">MIT<span class="text-slate-900 dark:text-slate-200">.</span></a>
+                </div>
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">About</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Skills</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Projects</a>
+                    <a href="#contact" class="text-sm font-medium text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors">Contact</a>
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-blue-400 transition-colors focus:outline-none" aria-label="Toggle Dark Mode">
+                        <i id="theme-icon" class="fas fa-moon text-lg"></i>
+                    </button>
+                </nav>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-4">
+                    <button id="mobile-theme-toggle" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-white focus:outline-none" aria-label="Toggle Dark Mode">
+                        <i id="mobile-theme-icon" class="fas fa-moon text-xl"></i>
+                    </button>
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-blue-600 dark:text-slate-300 dark:hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-100 dark:bg-slate-800 border-b border-slate-200 dark:border-slate-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700 rounded-md transition-colors">About</a>
+                <a href="#skills" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700 rounded-md transition-colors">Skills</a>
+                <a href="#projects" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700 rounded-md transition-colors">Projects</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-blue-600 hover:bg-slate-200 dark:text-slate-300 dark:hover:text-white dark:hover:bg-slate-700 rounded-md transition-colors">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-32 pb-20 md:pt-40 md:pb-28 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mt-8 floating" data-aos="fade-in" data-aos-duration="1200">
+            <h2 class="text-blue-600 dark:text-blue-400 font-semibold tracking-wide uppercase text-sm mb-3">Hello, I'm</h2>
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 dark:text-white mb-6 tracking-tight">
+                Mit Prajapati
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-600 dark:text-slate-400 mb-10 font-light h-8">
+                <span id="typed-text" class="font-medium text-blue-600 dark:text-blue-400"></span>
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#projects" class="w-full sm:w-auto px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors shadow-lg shadow-blue-500/30 text-center hover:-translate-y-1 transform duration-300">
+                    View My Work
+                </a>
+                <a href="#contact" class="w-full sm:w-auto px-8 py-3 rounded-lg bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-900 dark:text-slate-200 font-medium border border-slate-300 dark:border-slate-700 transition-colors text-center hover:-translate-y-1 transform duration-300">
+                    Contact Me
+                </a>
+                <a href="resume.pdf" download class="w-full sm:w-auto px-8 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-medium transition-colors shadow-lg shadow-emerald-500/30 flex items-center justify-center hover:-translate-y-1 transform duration-300">
+                    <i class="fas fa-download mr-2"></i> Download Resume
+                </a>
+            </div>
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="https://github.com/MitPrajapati" target="_blank" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors transform hover:scale-110 duration-200">
+                    <span class="sr-only">GitHub</span>
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+                <a href="https://linkedin.com/in/mit-prajapati01" target="_blank" class="text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors transform hover:scale-110 duration-200">
+                    <span class="sr-only">LinkedIn</span>
+                    <i class="fab fa-linkedin text-3xl"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-slate-100 dark:bg-slate-800/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8" data-aos="fade-up">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">About Me</h2>
+                <div class="mt-3 w-16 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded"></div>
+            </div>
+            <div class="max-w-3xl mx-auto text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center">
+                <p>
+                    Passionate web developer focused on building dynamic and responsive web applications. Skilled in Python backend development with Flask and Django, SQL databases, and modern web technologies. Currently pursuing an MCA, continually learning and expanding my skill set to build scalable and efficient solutions.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Technical Skills</h2>
+                <div class="mt-3 w-16 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Languages -->
+                <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:shadow-none shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+                        <i class="fas fa-code text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Languages</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> Python</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> HTML</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> CSS</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> JavaScript</li>
+                    </ul>
+                </div>
+                
+                <!-- Backend -->
+                <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:shadow-none shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+                        <i class="fas fa-server text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Backend</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> Flask</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> Django</li>
+                    </ul>
+                </div>
+                
+                <!-- Database -->
+                <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:shadow-none shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+                        <i class="fas fa-database text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Database</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> SQL</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> MySQL</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> SQLite</li>
+                    </ul>
+                </div>
+                
+                <!-- Tools -->
+                <div class="bg-white dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200 dark:border-slate-700 hover:border-blue-500/50 dark:hover:border-blue-500/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-xl dark:shadow-none shadow-md" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-12 h-12 bg-blue-100 dark:bg-blue-500/10 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 mb-5">
+                        <i class="fas fa-wrench text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4">Tools & Tech</h3>
+                    <ul class="space-y-3 text-slate-600 dark:text-slate-400">
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> Git</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> GitHub</li>
+                        <li class="flex items-center"><i class="fas fa-check text-blue-500 mr-3 text-sm"></i> SQLAlchemy</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-slate-100 dark:bg-slate-800/30">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Featured Projects</h2>
+                <div class="mt-3 w-16 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-white dark:bg-slate-800/60 rounded-3xl p-6 border border-slate-200 dark:border-slate-700/50 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 dark:hover:bg-slate-800/90 shadow-md" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-full aspect-video bg-slate-100 dark:bg-slate-900/50 rounded-2xl flex items-center justify-center text-slate-400 dark:text-slate-600 border border-slate-200 dark:border-slate-700/50 mb-6">
+                        <i class="fas fa-dumbbell text-5xl"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">FitLife-Gym</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-slate-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded border border-blue-100 dark:border-slate-700">PHP</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-slate-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded border border-blue-100 dark:border-slate-700">MySQL</span>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            A responsive fitness website featuring modern UI, user registration, plan purchase, and an admin dashboard.
+                        </p>
+                        <button class="open-modal-btn w-full px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors shadow-md shadow-blue-500/20" data-project="fitlife">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="bg-white dark:bg-slate-800/60 rounded-3xl p-6 border border-slate-200 dark:border-slate-700/50 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 dark:hover:bg-slate-800/90 shadow-md" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full aspect-video bg-slate-100 dark:bg-slate-900/50 rounded-2xl flex items-center justify-center text-slate-400 dark:text-slate-600 border border-slate-200 dark:border-slate-700/50 mb-6">
+                        <i class="fas fa-chart-pie text-5xl"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Expense Tracker</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-slate-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded border border-blue-100 dark:border-slate-700">Flask</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-slate-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded border border-blue-100 dark:border-slate-700">SQLAlchemy</span>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            An expense tracking web application featuring user authentication, interactive dashboards, and transaction management.
+                        </p>
+                        <button class="open-modal-btn w-full px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors shadow-md shadow-blue-500/20" data-project="expense">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="bg-white dark:bg-slate-800/60 rounded-3xl p-6 border border-slate-200 dark:border-slate-700/50 flex flex-col transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 dark:hover:bg-slate-800/90 shadow-md" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-full aspect-video bg-slate-100 dark:bg-slate-900/50 rounded-2xl flex items-center justify-center text-slate-400 dark:text-slate-600 border border-slate-200 dark:border-slate-700/50 mb-6">
+                        <i class="fas fa-sticky-note text-5xl"></i>
+                    </div>
+                    <div class="flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">Notes App</h3>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-slate-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded border border-blue-100 dark:border-slate-700">Flask</span>
+                            <span class="px-2 py-1 bg-blue-50 dark:bg-slate-900/80 text-blue-600 dark:text-blue-400 text-xs font-semibold rounded border border-blue-100 dark:border-slate-700">SQLite</span>
+                        </div>
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6 flex-grow">
+                            A secure notes management application featuring Flask-WTF forms and relational database management.
+                        </p>
+                        <button class="open-modal-btn w-full px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors shadow-md shadow-blue-500/20" data-project="notes">
+                            View Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-slate-900 dark:text-white sm:text-4xl">Get In Touch</h2>
+                <div class="mt-3 w-16 h-1 bg-blue-600 dark:bg-blue-500 mx-auto rounded"></div>
+                <p class="mt-6 text-lg text-slate-600 dark:text-slate-400">
+                    Feel free to reach out for collaborations or just a friendly hello.
+                </p>
+            </div>
+            
+            <div class="bg-white dark:bg-slate-800/80 rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-slate-700/50 shadow-xl dark:shadow-2xl" data-aos="fade-up">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    
+                    <!-- Contact Details -->
+                    <div class="space-y-8">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Contact Information</h3>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-700 shrink-0">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Email</h4>
+                                <a href="mailto:pmit9810@gmail.com" class="text-lg text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">pmit9810@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-700 shrink-0">
+                                <i class="fas fa-phone text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Phone</h4>
+                                <a href="tel:+918347431066" class="text-lg text-slate-900 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">+91 8347431066</a>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-slate-50 dark:bg-slate-900 rounded-xl flex items-center justify-center text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-700 shrink-0">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div class="ml-5">
+                                <h4 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">Location</h4>
+                                <p class="text-lg text-slate-900 dark:text-slate-200">Satlasna, Mehsana, Gujarat</p>
+                            </div>
+                        </div>
+
+                        <!-- Social Links -->
+                        <div class="pt-6 border-t border-slate-200 dark:border-slate-700/50 flex gap-4">
+                            <a href="https://github.com/MitPrajapati" target="_blank" class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:border-slate-400 dark:hover:border-slate-500 transition-colors transform hover:-translate-y-1">
+                                <i class="fab fa-github text-xl"></i>
+                            </a>
+                            <a href="https://linkedin.com/in/mit-prajapati01" target="_blank" class="w-12 h-12 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:border-blue-400 dark:hover:border-blue-500 transition-colors transform hover:-translate-y-1">
+                                <i class="fab fa-linkedin text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="lg:border-l lg:border-slate-200 dark:lg:border-slate-700/50 lg:pl-12">
+                        <h3 class="text-2xl font-bold text-slate-900 dark:text-white mb-6">Send Me a Message</h3>
+                        
+                        {% if messages %}
+                        <div class="mb-4 space-y-2">
+                            {% for message in messages %}
+                            <div class="p-3 rounded-lg text-sm font-medium text-center {% if message.tags == 'error' %}bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400{% else %}bg-emerald-100 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-400{% endif %}">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+
+                        <form id="contact-form" action="{% url 'home' %}" method="POST" class="space-y-4">
+                            {% csrf_token %}
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Name</label>
+                                <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="Your Name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
+                                <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="you@example.com">
+                            </div>
+                            <div>
+                                <label for="subject" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Subject</label>
+                                <input type="text" id="subject" name="subject" class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors" placeholder="Subject (Optional)">
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Message</label>
+                                <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors resize-none" placeholder="Your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="w-full px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium transition-colors shadow-lg shadow-blue-500/30 flex justify-center items-center">
+                                <i class="fas fa-paper-plane mr-2"></i> Send Message
+                            </button>
+                            <div id="form-feedback" class="hidden mt-4 p-3 rounded-lg text-sm font-medium text-center transition-all duration-300"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 dark:bg-slate-950 py-8 border-t border-slate-200 dark:border-slate-800 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <p class="text-slate-600 dark:text-slate-500 text-sm">
+                &copy; <span id="year"></span> Mit Prajapati. Built with HTML, Tailwind CSS & JavaScript.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-blue-600 text-white w-12 h-12 flex items-center justify-center rounded-full shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-40 hover:bg-blue-500 hover:-translate-y-1 focus:outline-none" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Project Modal Structure -->
+    <div id="project-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm overflow-y-auto h-full w-full flex items-center justify-center transition-all duration-300">
+        <!-- Modal Content -->
+        <div class="modal-content relative p-8 w-full max-w-2xl bg-white dark:bg-slate-800 rounded-3xl shadow-2xl opacity-0 scale-95 transition-all duration-300 mx-4 border border-slate-200 dark:border-slate-700">
+            <!-- Close btn -->
+            <button class="close-modal absolute top-5 right-5 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors focus:outline-none">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+            
+            <h3 id="modal-title" class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white mb-4 pr-8">Project Title</h3>
+            
+            <div class="mb-6">
+                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-2">Architecture & Overview</h4>
+                <p id="modal-overview" class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"></p>
+            </div>
+            
+            <div class="mb-8">
+                <h4 class="text-lg font-semibold text-slate-800 dark:text-slate-200 mb-3">Key Technical Highlights</h4>
+                <ul id="modal-highlights" class="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                    <!-- Injected via JS -->
+                </ul>
+            </div>
+            
+            <div class="flex flex-wrap gap-4 pt-4 border-t border-slate-200 dark:border-slate-700">
+                <a id="modal-source-btn" href="#" target="_blank" class="px-5 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-slate-700 dark:hover:bg-slate-600 text-white text-sm font-medium transition-colors flex items-center">
+                    <i class="fab fa-github mr-2 text-lg"></i> Source Code
+                </a>
+                <a id="modal-demo-btn" href="#" target="_blank" class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-medium transition-colors flex items-center shadow-md shadow-blue-500/20">
+                    <i class="fas fa-external-link-alt mr-2"></i> Live Demo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- External Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
+    <!-- Custom Script -->
+    <script src="{% static 'js/script.js' %}" defer></script>
+</body>
+</html>
